@@ -64,13 +64,23 @@
       <div class="offcanvas-body small">
         <form onsubmit="app.GiftsController.giveGift(event)">
           <input type="text" name="tag" placeholder="Tag" required />
-          <input type="text" name="url" placeholder="Image Url" required />
+          <input type="text" name="url" placeholder="Image Url" required id="imgUrl" />
           <button class="btn btn-outline-light" type="submit">Submit</button>
         </form>
-        <form class="form-control">
+        <form class="form-control" onsubmit="app.GiftsController.searchGiphy(event)">
           <input type="text" name="query" />
           <button class="btn btn-outline-light"><i class="mdi mdi-magnify"></i></button>
         </form>
+        <div class="container-fluid">
+          <section class="row" id="giphy-img-spot">
+            <!-- <div class="col-2">
+              <img class="img-fluid"
+                src="https://images.unsplash.com/photo-1684095756689-e054ddb31801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80"
+                alt="title" />
+
+            </div> -->
+          </section>
+        </div>
       </div>
     </div>
   </main>

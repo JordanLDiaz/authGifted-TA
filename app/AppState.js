@@ -14,6 +14,8 @@ class ObservableAppState extends EventEmitter {
   gifts = []
   socketData = []
 
+  giphyGifs = []
+
   // Used to load initial data
   init() {
 

@@ -1,8 +1,10 @@
 import { AppState } from "../AppState.js";
 import { Gift } from "../models/Gift.js";
-import { api } from "./AxiosService.js";
+import { GiphyGif } from "../models/GiphyGif.js";
+import { api, giphyApi } from "./AxiosService.js";
 
 class GiftsService {
+
   async getGifts() {
     const res = await api.get('/api/gifts')
     console.log('[GETTING GIFTS]', res.data);
@@ -38,6 +40,13 @@ class GiftsService {
     const res = await api.delete('api/gifts/' + giftId)
     console.log('[HERE IS THE RES]', res.data);
     AppState.gifts = AppState.gifts.filter(g => g.id != giftId)
+  }
+
+  async searchGiphy(query) {
+    const res = await giphyApi.get('', { params: { q: query, limit: 10 } })
+    // console.log(res.data);
+    AppState.giphyGifs = res.data.data.map(g => new GiphyGif(g))
+    console.log(AppState.giphyGifs);
   }
 }
 

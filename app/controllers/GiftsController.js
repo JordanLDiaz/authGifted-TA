@@ -1,5 +1,5 @@
 import { AppState } from "../AppState.js";
-import { Gift } from "../models/Gift.js";
+// import { Gift } from "../models/Gift.js";
 import { giftsService } from "../services/GiftsService.js";
 import { getFormData } from "../utils/FormHandler.js";
 import { Pop } from "../utils/Pop.js";
@@ -18,6 +18,14 @@ function _drawGift() {
   setHTML('gifts', template)
 }
 
+function _drawGiphys() {
+  let template = ''
+  AppState.giphyGifs.forEach(g => {
+    template += g.GiphyTemplate
+  })
+  setHTML('giphy-img-spot', template)
+}
+
 
 export class GiftsController {
   constructor() {
@@ -26,6 +34,7 @@ export class GiftsController {
     _drawGift()
     AppState.on('gifts', _drawGift)
     AppState.on('account', _drawGift)
+    AppState.on('giphyGifs', _drawGiphys)
   }
 
   async getGifts() {
@@ -66,9 +75,29 @@ export class GiftsController {
       if (!yes) {
         return
       }
-      giftsService.removeGift(giftId)
+      await giftsService.removeGift(giftId)
     } catch (error) {
       Pop.error(error)
     }
+  }
+
+  async searchGiphy(event) {
+    try {
+      event.preventDefault()
+      // console.log(event.target);
+      let form = event.target;
+      // console.log(new FormData(form));
+      let formData = getFormData(form);
+      // console.log(formData);
+      await giftsService.searchGiphy(formData.query)
+      form.reset()
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+
+  setImgUrl(url) {
+    let inputElm = document.getElementById('imgUrl');
+    inputElm.value = url;
   }
 }
