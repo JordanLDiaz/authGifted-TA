@@ -21,7 +21,7 @@ function _drawGift() {
 
 export class GiftsController {
   constructor() {
-    // console.log('Hello from the gifts controller!');
+    console.log('Hello from the gifts controller!');
     this.getGifts()
     _drawGift()
     AppState.on('gifts', _drawGift)

@@ -16,7 +16,10 @@ export class Gift {
         <img
           src="${this.url}"
           class="img-fluid" alt="gift image" />
-        <h5>${this.tag} <span id="delete-button">${this.DeleteButton}</span></h5>
+          <div class="d-flex justify-content-between align-items-end">
+            <h5>${this.tag}</h5>
+            <span id="delete-button">${this.DeleteButton}</span>
+          </div>
      
       </div>
     </div>
@@ -41,7 +44,7 @@ export class Gift {
       return ''
     }
     return `
-    <button class="btn btn-danger" onclick="app.GiftsController.removeGift('${this.id}')"><span class="mdi mdi-delete-circle"></span></button>
+    <button class="m-1 btn btn-danger" onclick="app.GiftsController.removeGift('${this.id}')"><span class="mdi mdi-delete-circle"></span></button>
     `
   }
 }
