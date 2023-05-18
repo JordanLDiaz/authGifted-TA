@@ -18,9 +18,6 @@ function _drawGift() {
   setHTML('gifts', template)
 }
 
-function _drawDeleteButton() {
-  setHTML('delete-button', Gift.DeleteButton)
-}
 
 export class GiftsController {
   constructor() {
@@ -28,6 +25,7 @@ export class GiftsController {
     this.getGifts()
     _drawGift()
     AppState.on('gifts', _drawGift)
+    AppState.on('account', _drawGift)
   }
 
   async getGifts() {
