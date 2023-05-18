@@ -62,6 +62,10 @@ export class GiftsController {
 
   async removeGift(giftId) {
     try {
+      const yes = await Pop.confirm('Are you sure you want to delete this gift?')
+      if (!yes) {
+        return
+      }
       giftsService.removeGift(giftId)
     } catch (error) {
       Pop.error(error)

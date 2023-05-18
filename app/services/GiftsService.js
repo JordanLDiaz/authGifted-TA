@@ -35,6 +35,9 @@ class GiftsService {
 
   async removeGift(giftId) {
     console.log('[REMOVING GIFT]', giftId);
+    const res = await api.delete('api/gifts/' + giftId)
+    console.log('[HERE IS THE RES]', res.data);
+    AppState.gifts = AppState.gifts.filter(g => g.id != giftId)
   }
 }
 
