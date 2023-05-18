@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js";
+import { Gift } from "../models/Gift.js";
 import { giftsService } from "../services/GiftsService.js";
 import { getFormData } from "../utils/FormHandler.js";
 import { Pop } from "../utils/Pop.js";
@@ -15,6 +16,10 @@ function _drawGift() {
     }
   })
   setHTML('gifts', template)
+}
+
+function _drawDeleteButton() {
+  setHTML('delete-button', Gift.DeleteButton)
 }
 
 export class GiftsController {

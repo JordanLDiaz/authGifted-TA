@@ -16,7 +16,7 @@ export class Gift {
         <img
           src="${this.url}"
           class="img-fluid" alt="gift image" />
-        <h5>${this.tag} <span> ${this.DeleteButton} </span></h5>
+        <h5>${this.tag} <span id="delete-button"></span></h5>
      
       </div>
     </div>
